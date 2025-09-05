@@ -1,6 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LetterController;
+use App\Http\Controllers\UserController;
+use App\Livewire\LetterSearch;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +21,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    redirect('/dashboard');
 });
+
+
+Route::get('/login', [AuthenticationController::class, 'index'])->name('login');
+
+Route::resource('dashboard', DashboardController::class);
+
+Route::resource('letters', LetterController::class);
+Route::resource('users', UserController::class);
+Route::resource('categories', CategoryController::class);
+
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
