@@ -4,18 +4,6 @@
             <div class="card-head-row card-tools-still-right">
                 <div class="card-title">
                     Pengguna
-                    @if($search)
-                    <small class="text-muted ms-2">- Pencarian: "{{ $search }}"</small>
-                    @endif
-                </div>
-                <div class="card-tools">
-                    <div class="input-icon">
-                        <input type="text" name='search' class="form-control" placeholder="Search for..."
-                            wire:model.live.debounce.300ms="search" value="{{ $search }}" />
-                        <span class="input-icon-addon">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </div>
                 </div>
             </div>
             <div class="card-list py-4">
@@ -46,9 +34,9 @@
                         <div class="username">{{ $user->name }}</div>
                         <span class="{{ $role_badge }}">{{ ucfirst($role) }}</span>
                     </div>
-                    <button class="btn btn-icon btn-link op-8 me-1">
+                    <a href="mailto:{{ $user->email }}" class="btn btn-icon btn-link op-8 me-1">
                         <i class="far fa-envelope"></i>
-                    </button>
+                    </a>
                 </div>
                 @endforeach
             </div>
