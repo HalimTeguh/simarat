@@ -3,17 +3,19 @@
 namespace App\Livewire;
 
 use App\Models\Categories;
-use App\Models\Letters;
+use App\Models\letters;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class LetterTable extends Component
+class LettersDashboard extends Component
 {
     use WithPagination;
 
     public $search = '';
 
     protected $paginationTheme = 'bootstrap';
+
+    protected $pageName = 'letters';
 
     protected $updatesQueryString = [
         'search' => ['except' => '']
@@ -32,19 +34,19 @@ class LetterTable extends Component
     public function render()
     {
         info($this->search);
-        $letters = Letters::query()
+        $letters = letters::query()
             ->when(!empty($this->search), function ($query) {
                 $searchTerm = '%' . $this->search . '%';
-                $query->where(function($subQuery) use ($searchTerm) {
+                $query->where(function ($subQuery) use ($searchTerm) {
                     $subQuery->where('title', 'like', $searchTerm)
-                             ->orWhere('number_of_letters', 'like', $searchTerm);
+                        ->orWhere('number_of_letters', 'like', $searchTerm);
                 });
             })
             ->latest()
-            ->paginate(10);
+            ->paginate(5, ['*'], $this->pageName);
 
         $categories = Categories::all();
 
-        return view('livewire.letter-table', compact('letters', 'categories'));
+        return view('livewire.letters-dashboard', compact('letters', 'categories'));
     }
 }

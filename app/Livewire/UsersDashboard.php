@@ -6,13 +6,15 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class UserTable extends Component
+class UsersDashboard extends Component
 {
     use WithPagination;
 
     public $search = '';
 
     protected $paginationTheme = 'bootstrap';
+
+    protected $pageName = 'users';
 
     protected $updatesQueryString = [
         'search' => ['except' => '']
@@ -45,12 +47,12 @@ class UserTable extends Component
                 });
             })
             ->orderBy('id', 'asc') // This is crucial for consistent pagination
-            ->paginate(10);
+            ->paginate(5, ['*'], $this->pageName);
     }
 
     public function render()
     {
-        return view('livewire.user-table', [
+        return view('livewire.users-dashboard', [
             'users' => $this->users
         ]);
     }
