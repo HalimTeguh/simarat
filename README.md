@@ -34,23 +34,23 @@ Dengan fitur pencarian, preview PDF, dan manajemen user berbasis role, SIMARAT m
 ## 🖼️ Preview
 
 ### Dashboard Ringkasan
-![Preview Dashboard](docs/screenshots/dashboard.png)
+![Preview Dashboard](./public/readme/dashboard.png)
 
 ### Daftar Surat
-![Preview Surat](docs/screenshots/letters.png)
+![Preview Surat](./public/readme/letters.png)
 
 ### Manajemen User
-![Preview User](docs/screenshots/users.png)
+![Preview User](./public/readme/users.png)
 
 ---
 
 ## 🗂️ Arsitektur Sistem
 
 ### Use Case Diagram
-![Use Case](docs/Use_Case_SIMARAT.png)
+![Use Case](./public/readme/useCase.png)
 
-### ERD
-![ERD](docs/ERD.jpg)
+### Entity Relational Diagram
+![Entity Relational Diagram](./public/readme/erd.jpg)
 
 ---
 
