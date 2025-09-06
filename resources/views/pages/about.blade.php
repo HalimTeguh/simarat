@@ -61,7 +61,7 @@
                                         Github
                                     </p>
                                     <h6>
-                                        <a class="btn btn-outline-primary" href="http://github.com/halimteguhsaputro" target="_blank" rel="noopener noreferrer">SIMARAT - Sistem Informasi Manajemen Persuratan</a>
+                                        <a class="btn btn-outline-primary" href="https://github.com/HalimTeguh/simarat" target="_blank" rel="noopener noreferrer">SIMARAT - Sistem Informasi Manajemen Persuratan</a>
                                     </h6>
                                 </div>
 
