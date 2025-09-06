@@ -59,7 +59,7 @@ Dengan fitur pencarian, preview PDF, dan manajemen user berbasis role, SIMARAT m
 - **Frontend**: TailwindCSS + Livewire v3  
 - **DB**: MySQL 8  
 - **Storage**: Laravel Filesystem (local/private)  
-- **Auth & Role**: spatie/laravel-permission  
+- **Auth & Role**: middleware laravel  
 - **Notifikasi**: SweetAlert2  
 
 ---
