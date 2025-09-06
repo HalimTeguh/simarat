@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\letters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class LetterController extends Controller
@@ -99,6 +100,11 @@ class LetterController extends Controller
     public function edit(string $id)
     {
         //
+
+        if (Auth::user()->role != 'admin' && Auth::user()->role != 'staff') {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengedit surat');
+        }
+
         $letter = letters::findOrFail($id);
 
         if (!$letter) {
@@ -117,6 +123,10 @@ class LetterController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        if (Auth::user()->role != 'admin' && Auth::user()->role != 'staff') {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk mengedit surat');
+        }
 
         // Cari data surat lama
         $letter = letters::findOrFail($id);
@@ -179,6 +189,10 @@ class LetterController extends Controller
     public function destroy(string $id)
     {
         //
+        if (Auth::user()->role != 'admin' && Auth::user()->role != 'staff') {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses untuk menghapus surat');
+        }
+        
         $letter = letters::findOrFail($id);
 
         if (!$letter) {

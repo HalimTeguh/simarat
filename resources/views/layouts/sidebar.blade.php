@@ -29,24 +29,28 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('letters.*') ? 'active' : '' }}">
-                    <a href="{{ route('letters.index') }}">
-                        <i class="fas fa-file"></i>
-                        <p>Persuratan</p>
-                    </a>
-                </li>
+                @if(Auth::user()->role == 'admin')
                 <li class="nav-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}">
                         <i class="fas fa-users"></i>
                         <p>Pengguna</p>
                     </a>
                 </li>
+                @endif
+                <li class="nav-item {{ request()->routeIs('letters.*') ? 'active' : '' }}">
+                    <a href="{{ route('letters.index') }}">
+                        <i class="fas fa-file"></i>
+                        <p>Persuratan</p>
+                    </a>
+                </li>
+                @if(Auth::user()->role == 'staff' || Auth::user()->role == 'admin')
                 <li class="nav-item {{ request()->routeIs('categories.*') ? 'active' : '' }}">
                     <a href="{{ route('categories.index') }}">
                         <i class="fas fa-th-list"></i>
                         <p>Kategori Surat</p>
                     </a>
                 </li>
+                @endif
                 <li class="nav-item" {{ request()->routeIs('about') ? 'active' : '' }}>
                     <a href="{{ route('about') }}">
                         <i class="fas fa-info-circle"></i>

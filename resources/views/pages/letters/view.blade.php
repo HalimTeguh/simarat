@@ -32,9 +32,11 @@ $category_badge = 'badge badge-info';
             <div class="card-head-row card-tools-still-right">
               <h4 class="card-title">Detail Surat</h4>
               <div class="card-tools">
+                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
                 <a class="btn btn-primary btn-md" href="{{ route('letters.edit', $letter->id) }}">
                   <span class="fa fa-edit me-2"></span> edit
                 </a>
+                @endif
                 <a href="{{ route('letters.index') }}" class="btn btn-danger">Kembali</a>
               </div>
             </div>
@@ -46,7 +48,8 @@ $category_badge = 'badge badge-info';
                   <p class="card-category">
                     Nomor Surat
                   </p>
-                  <h6>{{ $letter->number_of_letters }} <span class="{{ $category_badge }} ms-4">{{ $selected_category->name
+                  <h6>{{ $letter->number_of_letters }} <span class="{{ $category_badge }} ms-4">{{
+                      $selected_category->name
                       }}</span></h6>
                 </div>
                 <div class="mb-3 ms-2">

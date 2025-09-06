@@ -58,6 +58,7 @@
                                     href="{{ route('letters.show', $letter->id) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
+                                @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
                                 <form action="{{ route('letters.destroy', $letter->id ) }}" method="POST"
                                     class="d-inline delete-form">
                                     @csrf
@@ -66,6 +67,7 @@
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
+                                @endif
                             </td>
                         </tr>
                         @empty
@@ -112,7 +114,9 @@
         </div>
     </div>
 
+    @if(Auth::user()->role == 'admin' || Auth::user()->role == 'staff')
     <div class="ms-md-auto py-2 py-md-0">
         <a href="{{ route('letters.create') }}" class="btn btn-primary btn-round">Arsipkan Surat</a>
     </div>
+    @endif
 </div>
